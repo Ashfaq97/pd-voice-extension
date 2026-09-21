@@ -1,0 +1,41 @@
+{
+  "uci_mdvp": {
+    "output": "data/processed/uci_mdvp.csv",
+    "rows": 195,
+    "features": 22,
+    "subjects": 32,
+    "pd_subjects": 24,
+    "hc_subjects": 8,
+    "majority_baseline": 0.7538,
+    "sources": {
+      "data/raw/parkinsons.csv": "a36116c2deac0789"
+    },
+    "output_sha256_16": "de63a5c5a2b88748"
+  },
+  "sakar_train": {
+    "output": "data/processed/sakar_train.csv",
+    "rows": 1040,
+    "features": 26,
+    "subjects": 40,
+    "pd_subjects": 20,
+    "hc_subjects": 20,
+    "majority_baseline": 0.5,
+    "sources": {
+      "data/raw/sakar/train_data.txt": "eb1cec4315f2b35b"
+    },
+    "output_sha256_16": "6e061c6f2187db09"
+  },
+  "sakar_test": {
+    "output": "data/processed/sakar_test.csv",
+    "rows": 168,
+    "features": 26,
+    "subjects": 28,
+    "pd_subjects": 28,
+    "hc_subjects": 0,
+    "majority_baseline": 1.0,
+    "sources": {
+      "data/raw/sakar/test_data.txt": "bd358e986f4fdef4"
+    },
+    "output_sha256_16": "459bd32717e09e1e"
+  }
+}

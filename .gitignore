@@ -1,0 +1,25 @@
+# --- Python environments -------------------------------------------------
+.venv/
+# Stale 2022/2023 virtualenvs left in the project root. Not part of the
+# project; safe to delete. Kept out of git.
+bin/
+lib/
+include/
+pyvenv.cfg
+parkinson/
+
+# --- Training junk -------------------------------------------------------
+catboost_info/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# --- macOS ---------------------------------------------------------------
+.DS_Store
+
+# --- Large or non-distributable artefacts --------------------------------
+# 45 MB nbconvert export of a 2023 notebook. Superseded by notebooks/archive/.
+notebooks/archive/report.html
+# YouTube-sourced audio: retired for provenance/consent reasons (README §
+# "Excluded data"). Must not be redistributed.
+Test Recordings/
