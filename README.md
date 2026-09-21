@@ -124,15 +124,63 @@ manuscript/        paper draft
 
 Run in order:
 
-| Step | Command | Writes |
-|---|---|---|
-| Build | `python src/build_datasets.py` | `data/processed/*.csv`, `manifest.json` |
-| Guards | `python src/test_traps.py` | — |
+| # | Command | Writes | Runtime |
+|---|---|---|---|
+| 1 | `python src/build_datasets.py` | `data/processed/*.csv`, `manifest.json` | <1 s |
+| 2 | `python src/test_traps.py` | — (checks the data guards fire) | <1 s |
+| 3 | `python src/run_cv_comparison.py` | `cv_comparison.csv`, `_folds.csv`, `cv_best_params.csv`, `oof_predictions.csv` | ~8 min |
+| 4 | `python src/run_seed_sensitivity.py` | `seed_sensitivity.csv`, `seed_sensitivity_summary.csv` | ~18 min |
+| 5 | `python src/run_recording_type.py` | `recording_type.csv`, `recording_type_profile.csv` | ~3 min |
+| 6 | `python src/run_external_validation.py` | `external_validation.csv`, `_all_models.csv` | ~2 min |
+| 7 | `python src/run_interpretability.py` | `shap_importance.csv`, `lr_coefficients.csv`, `collinearity_report.csv`, figures 4/4b | ~2 min |
+| 8 | `python src/make_figures.py` | figures 1, 2, 3, 5 | <1 min |
+| 9 | `python src/verify_checkpoint.py` | `checkpoint_comparison.csv`, `_rectype.csv` | <1 min |
+| 10 | `python src/verify_manuscript.py` | — (144 checks of the manuscript against the tables) | <1 s |
 
-Further steps are added as the analysis phases land.
+Steps 3-7 are independent of each other and depend only on step 1. Step 8 needs 3, 4 and
+5; step 9 needs 3 and 5; step 10 needs 3-7.
+
+### Verification
+
+Two scripts exist so that nothing in the write-up drifts away from the data.
+
+`verify_checkpoint.py` compares the run against the figures recorded in the project
+handoff, and against the handoff's recording-type table, flagging any deviation beyond
+0.02. It also asserts the leakage mechanism directly: under regime A, 100% of test
+recordings come from a speaker already in the training fold; under regime B, 0%.
+
+`verify_manuscript.py` parses the manuscript's tables back out of the markdown and checks
+all 144 quoted numbers against the generated CSVs. It exits non-zero on any mismatch, so
+re-running the analysis and forgetting to update the paper is a hard error rather than a
+silent inconsistency.
 
 `data/processed/manifest.json` records the sha256 of every input and output, so a
 rebuild can be checked against the run that produced the published tables.
+
+## Findings
+
+Accuracy falls by 5.8 to 15.5 percentage points when folds are formed by speaker rather
+than by recording — measured as a paired difference across 10 fold seeds, all p < 0.001,
+on both corpora. The inflation is concentrated in flexible models: logistic regression
+loses 0.065 (UCI) and 0.058 (Sakar) while the tree ensembles lose 0.129 to 0.143. Under
+leave-one-subject-out on UCI, logistic regression is the most accurate model (0.836)
+having been last of five under recording-level validation.
+
+Healthy-control recall on UCI falls from 0.583-0.804 to 0.285-0.392, against a
+majority-class baseline of 0.754. No recording type rescues performance: the best of 20
+model-by-type cells on Sakar is 0.596 against chance 0.500, and sustained vowels are the
+weakest task for four of five models.
+
+Two results differ from what the project handoff anticipated, and are reported as such:
+
+- **Leaky models do not use different features.** SHAP importance rankings under
+  recording-level and subject-level training correlate at rho +0.87 to +0.96 with 4-5 of
+  the top 5 features shared. The leak is memorisation within a fixed feature geometry,
+  not feature substitution.
+- **No feature survives correction.** After pruning definitional duplicates
+  (`Jitter:DDP` is exactly 3x `MDVP:RAP`; `Shimmer:DDA` exactly 3x `Shimmer:APQ3`) and
+  then by VIF, with standard errors clustered by speaker, zero coefficients survive
+  Benjamini-Hochberg at FDR 0.05 on either corpus.
 
 ## Method constraints
 
