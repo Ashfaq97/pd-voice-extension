@@ -1,0 +1,3 @@
+config,train_recordings,train_subjects,selected_model,hyperparameters,train_cv_accuracy_subject_level,train_cv_specificity_subject_level,train_cv_mcc_subject_level,test_recordings,test_subjects,test_sensitivity_recording,test_sensitivity_speaker,test_mean_pd_probability,test_accuracy,test_specificity,test_mcc,constant_pd_baseline
+vowel_only,120,40,KNN,"{'n_neighbors': 9, 'weights': 'uniform'}",0.5833,0.5,0.169,168,28,0.5893,0.5714,0.5489,0.5893,,,1.0
+full_train,1040,40,XGBoost,"{'learning_rate': 0.05, 'max_depth': 3, 'n_estimators': 100}",0.5933,0.6269,0.187,168,28,0.4107,0.3571,0.4919,0.4107,,,1.0

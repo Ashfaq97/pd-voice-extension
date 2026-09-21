@@ -1,0 +1,193 @@
+dataset,model,regime,feature,mean_abs_shap
+UCI/MDVP,Logistic Regression,A_leaky_recording,MDVP:Fo(Hz),0.29342383008762407
+UCI/MDVP,Logistic Regression,A_leaky_recording,MDVP:Fhi(Hz),0.17263659427757902
+UCI/MDVP,Logistic Regression,A_leaky_recording,MDVP:Flo(Hz),0.07481122132450586
+UCI/MDVP,Logistic Regression,A_leaky_recording,MDVP:Jitter(%),0.28675313280208425
+UCI/MDVP,Logistic Regression,A_leaky_recording,MDVP:Jitter(Abs),0.34357998272166385
+UCI/MDVP,Logistic Regression,A_leaky_recording,MDVP:RAP,0.2895984930309818
+UCI/MDVP,Logistic Regression,A_leaky_recording,MDVP:PPQ,0.17193762646703492
+UCI/MDVP,Logistic Regression,A_leaky_recording,Jitter:DDP,0.28977844629087346
+UCI/MDVP,Logistic Regression,A_leaky_recording,MDVP:Shimmer,0.21762310752063158
+UCI/MDVP,Logistic Regression,A_leaky_recording,MDVP:Shimmer(dB),0.1951809493139435
+UCI/MDVP,Logistic Regression,A_leaky_recording,Shimmer:APQ3,0.09284916684250356
+UCI/MDVP,Logistic Regression,A_leaky_recording,Shimmer:APQ5,0.24470545056180376
+UCI/MDVP,Logistic Regression,A_leaky_recording,MDVP:APQ,0.5423535095630138
+UCI/MDVP,Logistic Regression,A_leaky_recording,Shimmer:DDA,0.09306206515537163
+UCI/MDVP,Logistic Regression,A_leaky_recording,NHR,0.14874942817134476
+UCI/MDVP,Logistic Regression,A_leaky_recording,HNR,0.18886532950531268
+UCI/MDVP,Logistic Regression,A_leaky_recording,RPDE,0.3017805803538137
+UCI/MDVP,Logistic Regression,A_leaky_recording,DFA,0.15113810618889187
+UCI/MDVP,Logistic Regression,A_leaky_recording,spread1,0.8037734389764908
+UCI/MDVP,Logistic Regression,A_leaky_recording,spread2,0.40417922259939765
+UCI/MDVP,Logistic Regression,A_leaky_recording,D2,0.5251249449216561
+UCI/MDVP,Logistic Regression,A_leaky_recording,PPE,0.7079481084439246
+UCI/MDVP,Logistic Regression,B_group_kfold,MDVP:Fo(Hz),0.38228812784506877
+UCI/MDVP,Logistic Regression,B_group_kfold,MDVP:Fhi(Hz),0.15125048682430198
+UCI/MDVP,Logistic Regression,B_group_kfold,MDVP:Flo(Hz),0.07432672717645804
+UCI/MDVP,Logistic Regression,B_group_kfold,MDVP:Jitter(%),0.304112442070717
+UCI/MDVP,Logistic Regression,B_group_kfold,MDVP:Jitter(Abs),0.3044151978131215
+UCI/MDVP,Logistic Regression,B_group_kfold,MDVP:RAP,0.34770202729171096
+UCI/MDVP,Logistic Regression,B_group_kfold,MDVP:PPQ,0.10651742643320466
+UCI/MDVP,Logistic Regression,B_group_kfold,Jitter:DDP,0.34707715199456024
+UCI/MDVP,Logistic Regression,B_group_kfold,MDVP:Shimmer,0.19831053367078422
+UCI/MDVP,Logistic Regression,B_group_kfold,MDVP:Shimmer(dB),0.14743633728648506
+UCI/MDVP,Logistic Regression,B_group_kfold,Shimmer:APQ3,0.17694013541110085
+UCI/MDVP,Logistic Regression,B_group_kfold,Shimmer:APQ5,0.29091359074412954
+UCI/MDVP,Logistic Regression,B_group_kfold,MDVP:APQ,0.6196719970279287
+UCI/MDVP,Logistic Regression,B_group_kfold,Shimmer:DDA,0.17710290317059554
+UCI/MDVP,Logistic Regression,B_group_kfold,NHR,0.2580997906930504
+UCI/MDVP,Logistic Regression,B_group_kfold,HNR,0.15679485193362486
+UCI/MDVP,Logistic Regression,B_group_kfold,RPDE,0.5107654664939247
+UCI/MDVP,Logistic Regression,B_group_kfold,DFA,0.2647063587284337
+UCI/MDVP,Logistic Regression,B_group_kfold,spread1,0.8433886356455833
+UCI/MDVP,Logistic Regression,B_group_kfold,spread2,0.46707852724361293
+UCI/MDVP,Logistic Regression,B_group_kfold,D2,0.5062439717490228
+UCI/MDVP,Logistic Regression,B_group_kfold,PPE,0.7606824649697511
+UCI/MDVP,XGBoost,A_leaky_recording,MDVP:Fo(Hz),0.5758777856826782
+UCI/MDVP,XGBoost,A_leaky_recording,MDVP:Fhi(Hz),0.6681550145149231
+UCI/MDVP,XGBoost,A_leaky_recording,MDVP:Flo(Hz),0.024298379197716713
+UCI/MDVP,XGBoost,A_leaky_recording,MDVP:Jitter(%),0.12392359972000122
+UCI/MDVP,XGBoost,A_leaky_recording,MDVP:Jitter(Abs),0.07777498662471771
+UCI/MDVP,XGBoost,A_leaky_recording,MDVP:RAP,0.4686746597290039
+UCI/MDVP,XGBoost,A_leaky_recording,MDVP:PPQ,0.0011014696210622787
+UCI/MDVP,XGBoost,A_leaky_recording,Jitter:DDP,0.0
+UCI/MDVP,XGBoost,A_leaky_recording,MDVP:Shimmer,0.012986816465854645
+UCI/MDVP,XGBoost,A_leaky_recording,MDVP:Shimmer(dB),0.18867242336273193
+UCI/MDVP,XGBoost,A_leaky_recording,Shimmer:APQ3,0.054345618933439255
+UCI/MDVP,XGBoost,A_leaky_recording,Shimmer:APQ5,0.1767573356628418
+UCI/MDVP,XGBoost,A_leaky_recording,MDVP:APQ,0.22704678773880005
+UCI/MDVP,XGBoost,A_leaky_recording,Shimmer:DDA,0.005685769021511078
+UCI/MDVP,XGBoost,A_leaky_recording,NHR,0.2580956816673279
+UCI/MDVP,XGBoost,A_leaky_recording,HNR,0.08981957286596298
+UCI/MDVP,XGBoost,A_leaky_recording,RPDE,0.18928353488445282
+UCI/MDVP,XGBoost,A_leaky_recording,DFA,0.3992454707622528
+UCI/MDVP,XGBoost,A_leaky_recording,spread1,0.6086930632591248
+UCI/MDVP,XGBoost,A_leaky_recording,spread2,0.8367056846618652
+UCI/MDVP,XGBoost,A_leaky_recording,D2,0.4544377326965332
+UCI/MDVP,XGBoost,A_leaky_recording,PPE,0.6762047410011292
+UCI/MDVP,XGBoost,B_group_kfold,MDVP:Fo(Hz),0.6539931297302246
+UCI/MDVP,XGBoost,B_group_kfold,MDVP:Fhi(Hz),0.6405931115150452
+UCI/MDVP,XGBoost,B_group_kfold,MDVP:Flo(Hz),0.031626731157302856
+UCI/MDVP,XGBoost,B_group_kfold,MDVP:Jitter(%),0.09313537180423737
+UCI/MDVP,XGBoost,B_group_kfold,MDVP:Jitter(Abs),0.007438747677952051
+UCI/MDVP,XGBoost,B_group_kfold,MDVP:RAP,0.31163203716278076
+UCI/MDVP,XGBoost,B_group_kfold,MDVP:PPQ,0.015688348561525345
+UCI/MDVP,XGBoost,B_group_kfold,Jitter:DDP,0.0
+UCI/MDVP,XGBoost,B_group_kfold,MDVP:Shimmer,0.0868929848074913
+UCI/MDVP,XGBoost,B_group_kfold,MDVP:Shimmer(dB),0.1556159257888794
+UCI/MDVP,XGBoost,B_group_kfold,Shimmer:APQ3,0.11536905169487
+UCI/MDVP,XGBoost,B_group_kfold,Shimmer:APQ5,0.1110384613275528
+UCI/MDVP,XGBoost,B_group_kfold,MDVP:APQ,0.157166987657547
+UCI/MDVP,XGBoost,B_group_kfold,Shimmer:DDA,0.0038024033419787884
+UCI/MDVP,XGBoost,B_group_kfold,NHR,0.2651766836643219
+UCI/MDVP,XGBoost,B_group_kfold,HNR,0.10069478303194046
+UCI/MDVP,XGBoost,B_group_kfold,RPDE,0.24446526169776917
+UCI/MDVP,XGBoost,B_group_kfold,DFA,0.40710073709487915
+UCI/MDVP,XGBoost,B_group_kfold,spread1,0.5145914554595947
+UCI/MDVP,XGBoost,B_group_kfold,spread2,0.8205077052116394
+UCI/MDVP,XGBoost,B_group_kfold,D2,0.39087772369384766
+UCI/MDVP,XGBoost,B_group_kfold,PPE,0.8690848350524902
+Sakar,Logistic Regression,A_leaky_recording,Jitter_local,0.1032085225021254
+Sakar,Logistic Regression,A_leaky_recording,Jitter_local_absolute,0.5193711891426647
+Sakar,Logistic Regression,A_leaky_recording,Jitter_rap,0.05003557560274094
+Sakar,Logistic Regression,A_leaky_recording,Jitter_ppq5,0.12417150569676327
+Sakar,Logistic Regression,A_leaky_recording,Jitter_ddp,0.048968004273221406
+Sakar,Logistic Regression,A_leaky_recording,Shimmer_local,0.0999322472743904
+Sakar,Logistic Regression,A_leaky_recording,Shimmer_local_dB,0.33436796755668885
+Sakar,Logistic Regression,A_leaky_recording,Shimmer_apq3,0.11807556497724263
+Sakar,Logistic Regression,A_leaky_recording,Shimmer_apq5,0.041225953277644695
+Sakar,Logistic Regression,A_leaky_recording,Shimmer_apq11,0.24216605695229576
+Sakar,Logistic Regression,A_leaky_recording,Shimmer_dda,0.11870642950287055
+Sakar,Logistic Regression,A_leaky_recording,AC,0.7124082415059577
+Sakar,Logistic Regression,A_leaky_recording,NTH,0.10472212202799255
+Sakar,Logistic Regression,A_leaky_recording,HTN,0.04986197220777844
+Sakar,Logistic Regression,A_leaky_recording,Median_pitch,0.1534086800567616
+Sakar,Logistic Regression,A_leaky_recording,Mean_pitch,0.09944964190559552
+Sakar,Logistic Regression,A_leaky_recording,Standard_deviation,0.08745924952346079
+Sakar,Logistic Regression,A_leaky_recording,Minimum_pitch,0.0633930865380001
+Sakar,Logistic Regression,A_leaky_recording,Maximum_pitch,0.23691859571801063
+Sakar,Logistic Regression,A_leaky_recording,Number_of_pulses,0.051765545702214234
+Sakar,Logistic Regression,A_leaky_recording,Number_of_periods,0.16812561072158558
+Sakar,Logistic Regression,A_leaky_recording,Mean_period,0.3039981564580349
+Sakar,Logistic Regression,A_leaky_recording,Standard_deviation_of_period,0.033468914288742754
+Sakar,Logistic Regression,A_leaky_recording,Fraction_of_locally_unvoiced_frames,0.162043159821955
+Sakar,Logistic Regression,A_leaky_recording,Number_of_voice_breaks,0.04498243477166744
+Sakar,Logistic Regression,A_leaky_recording,Degree_of_voice_breaks,0.14594241557872992
+Sakar,Logistic Regression,B_group_kfold,Jitter_local,0.2005404375832824
+Sakar,Logistic Regression,B_group_kfold,Jitter_local_absolute,0.46239544506009544
+Sakar,Logistic Regression,B_group_kfold,Jitter_rap,0.08520244474802029
+Sakar,Logistic Regression,B_group_kfold,Jitter_ppq5,0.13998439785445388
+Sakar,Logistic Regression,B_group_kfold,Jitter_ddp,0.0855327154215565
+Sakar,Logistic Regression,B_group_kfold,Shimmer_local,0.15788879001980893
+Sakar,Logistic Regression,B_group_kfold,Shimmer_local_dB,0.3246124966773864
+Sakar,Logistic Regression,B_group_kfold,Shimmer_apq3,0.12416006145064774
+Sakar,Logistic Regression,B_group_kfold,Shimmer_apq5,0.0703604732083906
+Sakar,Logistic Regression,B_group_kfold,Shimmer_apq11,0.2501011664335488
+Sakar,Logistic Regression,B_group_kfold,Shimmer_dda,0.12468155876634968
+Sakar,Logistic Regression,B_group_kfold,AC,0.6964201757685065
+Sakar,Logistic Regression,B_group_kfold,NTH,0.1976186042145017
+Sakar,Logistic Regression,B_group_kfold,HTN,0.11161285489299257
+Sakar,Logistic Regression,B_group_kfold,Median_pitch,0.15856394013860778
+Sakar,Logistic Regression,B_group_kfold,Mean_pitch,0.25759539356964894
+Sakar,Logistic Regression,B_group_kfold,Standard_deviation,0.12502380407738103
+Sakar,Logistic Regression,B_group_kfold,Minimum_pitch,0.12326028527831963
+Sakar,Logistic Regression,B_group_kfold,Maximum_pitch,0.232562571533849
+Sakar,Logistic Regression,B_group_kfold,Number_of_pulses,0.043979341705411734
+Sakar,Logistic Regression,B_group_kfold,Number_of_periods,0.17760493819707127
+Sakar,Logistic Regression,B_group_kfold,Mean_period,0.29888829013091633
+Sakar,Logistic Regression,B_group_kfold,Standard_deviation_of_period,0.06420309896941706
+Sakar,Logistic Regression,B_group_kfold,Fraction_of_locally_unvoiced_frames,0.16197850101347555
+Sakar,Logistic Regression,B_group_kfold,Number_of_voice_breaks,0.02082815049542343
+Sakar,Logistic Regression,B_group_kfold,Degree_of_voice_breaks,0.1694788818688591
+Sakar,XGBoost,A_leaky_recording,Jitter_local,0.07781744003295898
+Sakar,XGBoost,A_leaky_recording,Jitter_local_absolute,0.10557536035776138
+Sakar,XGBoost,A_leaky_recording,Jitter_rap,0.15783974528312683
+Sakar,XGBoost,A_leaky_recording,Jitter_ppq5,0.20282576978206635
+Sakar,XGBoost,A_leaky_recording,Jitter_ddp,0.011764421127736568
+Sakar,XGBoost,A_leaky_recording,Shimmer_local,0.15586631000041962
+Sakar,XGBoost,A_leaky_recording,Shimmer_local_dB,0.06509074568748474
+Sakar,XGBoost,A_leaky_recording,Shimmer_apq3,0.0612027645111084
+Sakar,XGBoost,A_leaky_recording,Shimmer_apq5,0.07798664271831512
+Sakar,XGBoost,A_leaky_recording,Shimmer_apq11,0.21598927676677704
+Sakar,XGBoost,A_leaky_recording,Shimmer_dda,0.0
+Sakar,XGBoost,A_leaky_recording,AC,0.09139914065599442
+Sakar,XGBoost,A_leaky_recording,NTH,0.03259607031941414
+Sakar,XGBoost,A_leaky_recording,HTN,0.16085626184940338
+Sakar,XGBoost,A_leaky_recording,Median_pitch,0.31974995136260986
+Sakar,XGBoost,A_leaky_recording,Mean_pitch,0.0658479854464531
+Sakar,XGBoost,A_leaky_recording,Standard_deviation,0.3298262655735016
+Sakar,XGBoost,A_leaky_recording,Minimum_pitch,0.1648402214050293
+Sakar,XGBoost,A_leaky_recording,Maximum_pitch,0.14636443555355072
+Sakar,XGBoost,A_leaky_recording,Number_of_pulses,0.08972711861133575
+Sakar,XGBoost,A_leaky_recording,Number_of_periods,0.096617192029953
+Sakar,XGBoost,A_leaky_recording,Mean_period,0.04333452507853508
+Sakar,XGBoost,A_leaky_recording,Standard_deviation_of_period,0.04581768438220024
+Sakar,XGBoost,A_leaky_recording,Fraction_of_locally_unvoiced_frames,0.18809634447097778
+Sakar,XGBoost,A_leaky_recording,Number_of_voice_breaks,0.010178237222135067
+Sakar,XGBoost,A_leaky_recording,Degree_of_voice_breaks,0.16051648557186127
+Sakar,XGBoost,B_group_kfold,Jitter_local,0.09037142246961594
+Sakar,XGBoost,B_group_kfold,Jitter_local_absolute,0.11872020363807678
+Sakar,XGBoost,B_group_kfold,Jitter_rap,0.1431654840707779
+Sakar,XGBoost,B_group_kfold,Jitter_ppq5,0.19424694776535034
+Sakar,XGBoost,B_group_kfold,Jitter_ddp,0.005925807636231184
+Sakar,XGBoost,B_group_kfold,Shimmer_local,0.15353569388389587
+Sakar,XGBoost,B_group_kfold,Shimmer_local_dB,0.0847417339682579
+Sakar,XGBoost,B_group_kfold,Shimmer_apq3,0.08364659547805786
+Sakar,XGBoost,B_group_kfold,Shimmer_apq5,0.0712416023015976
+Sakar,XGBoost,B_group_kfold,Shimmer_apq11,0.2183646559715271
+Sakar,XGBoost,B_group_kfold,Shimmer_dda,0.0
+Sakar,XGBoost,B_group_kfold,AC,0.08281868696212769
+Sakar,XGBoost,B_group_kfold,NTH,0.05435379222035408
+Sakar,XGBoost,B_group_kfold,HTN,0.16737937927246094
+Sakar,XGBoost,B_group_kfold,Median_pitch,0.37284719944000244
+Sakar,XGBoost,B_group_kfold,Mean_pitch,0.14834272861480713
+Sakar,XGBoost,B_group_kfold,Standard_deviation,0.29910820722579956
+Sakar,XGBoost,B_group_kfold,Minimum_pitch,0.16483046114444733
+Sakar,XGBoost,B_group_kfold,Maximum_pitch,0.214488685131073
+Sakar,XGBoost,B_group_kfold,Number_of_pulses,0.06848986446857452
+Sakar,XGBoost,B_group_kfold,Number_of_periods,0.12801916897296906
+Sakar,XGBoost,B_group_kfold,Mean_period,0.04154732823371887
+Sakar,XGBoost,B_group_kfold,Standard_deviation_of_period,0.05308925360441208
+Sakar,XGBoost,B_group_kfold,Fraction_of_locally_unvoiced_frames,0.18653059005737305
+Sakar,XGBoost,B_group_kfold,Number_of_voice_breaks,0.0004920391947962344
+Sakar,XGBoost,B_group_kfold,Degree_of_voice_breaks,0.15441298484802246

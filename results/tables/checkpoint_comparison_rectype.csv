@@ -1,0 +1,21 @@
+model,rec_type,expected,observed,delta,observed_sd,delta_in_sd,within_1sd,within_tol
+Logistic Regression,vowel,0.558,0.577,0.019,0.039,0.48,True,True
+Logistic Regression,number,0.535,0.595,0.06,0.021,2.82,False,False
+Logistic Regression,sentence,0.588,0.585,-0.003,0.027,-0.11,True,True
+Logistic Regression,word,0.489,0.541,0.052,0.024,2.12,False,False
+Gradient Boosting,vowel,0.558,0.527,-0.031,0.046,-0.68,True,False
+Gradient Boosting,number,0.565,0.546,-0.019,0.023,-0.85,True,True
+Gradient Boosting,sentence,0.556,0.566,0.01,0.018,0.53,True,True
+Gradient Boosting,word,0.528,0.517,-0.011,0.02,-0.58,True,True
+XGBoost,vowel,0.567,0.509,-0.058,0.041,-1.43,False,False
+XGBoost,number,0.56,0.546,-0.014,0.02,-0.68,True,True
+XGBoost,sentence,0.562,0.571,0.009,0.035,0.27,True,True
+XGBoost,word,0.55,0.51,-0.04,0.025,-1.6,False,False
+Decision Tree,vowel,0.533,0.48,-0.053,0.044,-1.2,False,False
+Decision Tree,number,0.532,0.516,-0.017,0.042,-0.39,True,True
+Decision Tree,sentence,0.569,0.548,-0.021,0.048,-0.43,True,False
+Decision Tree,word,0.506,0.507,0.001,0.035,0.04,True,True
+KNN,vowel,0.4,0.446,0.046,0.041,1.11,False,False
+KNN,number,0.585,0.596,0.011,0.021,0.52,True,True
+KNN,sentence,0.525,0.514,-0.011,0.026,-0.41,True,True
+KNN,word,0.553,0.519,-0.034,0.022,-1.51,False,False

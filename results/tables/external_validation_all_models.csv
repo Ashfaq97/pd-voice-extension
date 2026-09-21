@@ -1,0 +1,11 @@
+config,model,test_sensitivity,train_cv_specificity_subject_level,selected
+vowel_only,Logistic Regression,0.4226,0.5,False
+vowel_only,KNN,0.5893,0.5,True
+vowel_only,Decision Tree,0.5655,0.6167,False
+vowel_only,Gradient Boosting,0.6131,0.6167,False
+vowel_only,XGBoost,0.6429,0.55,False
+full_train,Logistic Regression,0.1488,0.6019,False
+full_train,KNN,0.5417,0.5731,False
+full_train,Decision Tree,0.6488,0.5962,False
+full_train,Gradient Boosting,0.5714,0.6154,False
+full_train,XGBoost,0.4107,0.6269,True
