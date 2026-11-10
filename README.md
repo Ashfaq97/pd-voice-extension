@@ -43,6 +43,8 @@ generated. Nothing there is hand-edited. `data/raw/` is never written to.
 | `data/raw/sakar/train_data.txt` | UCI ML Repository #301, *Parkinson Speech Dataset with Multiple Types of Sound Recordings* (Sakar et al. 2013). <https://archive.ics.uci.edu/dataset/301/> | archive downloaded 2022-09-25; files bear UCI's own 2014-06-11 timestamps | 1040 × 29 | No header row. sha256 `eb1cec4315f2b35b…` |
 | `data/raw/sakar/test_data.txt` | same archive | same | 168 × 28 | No header row, no `UPDRS` column. sha256 `bd358e986f4fdef4…` |
 | `data/raw/sakar/Parkinson_Multiple_Sound_Recording.rar` | same archive, kept intact | 2022-09-25 | 94,343 B | The distribution as downloaded, retained so the two files above can be re-verified. sha256 `24113bc9c7bcb76d…` |
+| `data/raw/sakar2018/pd_speech_features.csv` | UCI ML Repository #470, *Parkinson's Disease Classification* (Sakar et al. 2018). <https://archive.ics.uci.edu/dataset/470/parkinson+s+disease+classification> · DOI [10.24432/C5MS4X](https://doi.org/10.24432/C5MS4X) | downloaded 2026-11-10 | 756 × 755 | Two header rows: row 1 is a feature-group banner, row 2 the column names (`header=1` when reading). sha256 `9495d1100beaa240…` |
+| `data/raw/sakar2018/parkinsons_disease_classification.zip` | same, kept intact | 2026-11-10 | 2,140,135 B | The distribution as downloaded. sha256 `f161da296e4d6adb…` |
 
 The Sakar files were **not** re-downloaded. They were recovered from the original
 2022 archive, which was still on the author's machine; the 2023 working copy in the
