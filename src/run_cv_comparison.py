@@ -33,19 +33,11 @@ import pandas as pd
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import config as C
 from models import get_models, MODEL_ORDER
-from cv_core import nested_cv, majority_baseline, REGIMES
+from cv_core import nested_cv, majority_baseline
+from datasets import load_all, REGIMES_FOR, DISPLAY_ORDER
 
 N_SPLITS = 5
 INNER_SPLITS = 5
-
-
-def load_datasets():
-    uci = pd.read_csv(C.UCI_OUT)
-    sakar = pd.read_csv(C.SAKAR_TRAIN_OUT)
-    return {
-        "UCI/MDVP": (uci, C.UCI_FEATURES),
-        "Sakar": (sakar, C.SAKAR_FEATURES),
-    }
 
 
 def main() -> None:
@@ -55,7 +47,7 @@ def main() -> None:
     rows, fold_rows, param_rows, oof_rows = [], [], [], []
     t_start = time.time()
 
-    for ds_name, (df, features) in load_datasets().items():
+    for ds_name, (df, features) in load_all().items():
         X = df[features].values
         y = df["label"].values
         groups = df["subject"].values
@@ -65,7 +57,7 @@ def main() -> None:
             f"subjects, baseline {baseline:.4f} ==="
         )
 
-        for regime in REGIMES:
+        for regime in REGIMES_FOR[ds_name]:
             for model_name in MODEL_ORDER:
                 pipe, grid = models[model_name]
                 t0 = time.time()
@@ -139,15 +131,16 @@ def main() -> None:
         index=["dataset", "model"], columns="regime", values="accuracy"
     )
     piv["drop_A_minus_B"] = piv["B_group_kfold"] - piv["A_leaky_recording"]
+    piv = piv.dropna(how="all")
     piv = piv.reindex(
-        [(d, m) for d in ["UCI/MDVP", "Sakar"] for m in MODEL_ORDER]
+        [(d, m) for d in DISPLAY_ORDER for m in MODEL_ORDER]
     )
     print(piv.round(3).to_string())
 
     print("\n=== healthy-control recall, leaky vs subject-level ===")
     hc = summary.pivot_table(
         index=["dataset", "model"], columns="regime", values="recall_hc"
-    ).reindex([(d, m) for d in ["UCI/MDVP", "Sakar"] for m in MODEL_ORDER])
+    ).reindex([(d, m) for d in DISPLAY_ORDER for m in MODEL_ORDER])
     print(hc.round(3).to_string())
 
 

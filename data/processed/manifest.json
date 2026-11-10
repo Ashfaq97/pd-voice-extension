@@ -37,5 +37,18 @@
       "data/raw/sakar/test_data.txt": "bd358e986f4fdef4"
     },
     "output_sha256_16": "459bd32717e09e1e"
+  },
+  "sakar2018": {
+    "output": "data/processed/sakar2018.csv",
+    "rows": 756,
+    "features": 751,
+    "subjects": 252,
+    "pd_subjects": 188,
+    "hc_subjects": 64,
+    "majority_baseline": 0.746,
+    "sources": {
+      "data/raw/sakar2018/pd_speech_features.csv": "9495d1100beaa240"
+    },
+    "output_sha256_16": "86935f1e69f74374"
   }
 }

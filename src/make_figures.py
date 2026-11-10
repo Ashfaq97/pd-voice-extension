@@ -96,7 +96,7 @@ def fig2_accuracy() -> None:
     base = cv.groupby("dataset")["majority_baseline"].first()
 
     fig, axes = plt.subplots(1, 2, figsize=(11, 4.2))
-    for ax, ds in zip(axes, ["UCI/MDVP", "Sakar"]):
+    for ax, ds in zip(axes, ["UCI/MDVP", "Sakar-2013"]):
         d = summ[summ.dataset == ds].set_index("model").reindex(MODEL_ORDER)
         x = np.arange(len(MODEL_ORDER))
         w = 0.27
@@ -177,7 +177,7 @@ def fig5_hc_recall() -> None:
     """The specificity collapse that accuracy alone hides."""
     summ = pd.read_csv(C.TABLES / "seed_sensitivity_summary.csv")
     fig, axes = plt.subplots(1, 2, figsize=(10, 3.9))
-    for ax, ds in zip(axes, ["UCI/MDVP", "Sakar"]):
+    for ax, ds in zip(axes, ["UCI/MDVP", "Sakar-2013"]):
         d = summ[summ.dataset == ds].set_index("model").reindex(MODEL_ORDER)
         x = np.arange(len(MODEL_ORDER))
         for i, m in enumerate(MODEL_ORDER):

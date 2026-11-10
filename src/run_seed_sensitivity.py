@@ -33,6 +33,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import config as C
 from models import get_models, MODEL_ORDER
 from cv_core import nested_cv
+from datasets import load_all, DISPLAY_ORDER
 
 SEEDS = list(range(10))
 REGIMES = ["A_leaky_recording", "B_group_kfold"]
@@ -40,10 +41,7 @@ REGIMES = ["A_leaky_recording", "B_group_kfold"]
 
 def main() -> None:
     models = get_models()
-    datasets = {
-        "UCI/MDVP": (pd.read_csv(C.UCI_OUT), C.UCI_FEATURES),
-        "Sakar": (pd.read_csv(C.SAKAR_TRAIN_OUT), C.SAKAR_FEATURES),
-    }
+    datasets = load_all()
 
     rows = []
     t0 = time.time()
@@ -93,8 +91,8 @@ def main() -> None:
         })
 
     out = pd.DataFrame(summary).set_index(["dataset", "model"]).reindex(
-        [(d, m) for d in ["UCI/MDVP", "Sakar"] for m in MODEL_ORDER]
-    ).reset_index()
+        [(d, m) for d in DISPLAY_ORDER for m in MODEL_ORDER]
+    ).dropna(how="all").reset_index()
     out.to_csv(C.TABLES / "seed_sensitivity_summary.csv", index=False)
 
     show = out[["dataset", "model", "A_mean", "A_sd", "B_mean", "B_sd",

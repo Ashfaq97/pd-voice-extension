@@ -6,9 +6,10 @@ Produces three files, each with a uniform schema: a `subject` column (the
 grouping variable for every CV regime), a `label` column (1 = PD, 0 = HC),
 and the dataset's acoustic features.
 
-    uci_mdvp.csv     195 recordings, 32 subjects, 24 PD / 8 HC, 22 features
-    sakar_train.csv  1040 recordings, 40 subjects, 20 PD / 20 HC, 26 features
-    sakar_test.csv    168 recordings, 28 subjects, 28 PD /  0 HC, 26 features
+    uci_mdvp.csv     195 recordings,  32 subjects,  24 PD /  8 HC,  22 features
+    sakar_train.csv  1040 recordings,  40 subjects,  20 PD / 20 HC,  26 features
+    sakar_test.csv    168 recordings,  28 subjects,  28 PD /  0 HC,  26 features
+    sakar2018.csv     756 recordings, 252 subjects, 188 PD / 64 HC, 752 features
 
 Provenance note. data/raw/sakar/{train,test}_data.txt are the untouched files
 from the UCI archive Parkinson_Multiple_Sound_Recording.rar (files dated
@@ -165,6 +166,52 @@ def build_sakar_test() -> pd.DataFrame:
     return out
 
 
+def build_sakar2018() -> pd.DataFrame:
+    """The 2018 Sakar corpus (UCI #470).
+
+    Features arrive already extracted, so there is no audio processing and no
+    cleaning to do -- but the counts are asserted exactly as for the other two
+    corpora, because a silent regression here would be just as damaging.
+
+    Two things about the raw file are easy to get wrong and are handled here:
+    the first row is a feature-group banner rather than column names, and
+    `gender` is a subject-constant demographic that is dropped by default
+    (see config.SAKAR2018_USE_GENDER).
+    """
+    df = pd.read_csv(C.SAKAR2018_RAW, header=C.SAKAR2018_HEADER_ROW)
+    assert df.shape == (756, 755), f"sakar2018 raw shape {df.shape}"
+    assert df.isnull().sum().sum() == 0, "sakar2018 has nulls"
+    assert C.SAKAR2018_ID in df.columns, "sakar2018 lost its subject id column"
+
+    # Guard against the banner row being read as data, which would make every
+    # column object-typed and every count meaningless.
+    assert df[C.SAKAR2018_ID].dtype.kind in "iu", (
+        "sakar2018 id column is not integer -- header row likely misread")
+
+    df["label"] = df[C.SAKAR2018_TARGET].astype(int)
+    df["subject"] = "sakar2018_" + df[C.SAKAR2018_ID].astype(int).astype(str).str.zfill(3)
+
+    assert df["subject"].nunique() == 252, f"sakar2018 subjects {df['subject'].nunique()}"
+    assert set(df.groupby("subject").size()) == {3}, "not every subject has 3 recordings"
+    per_subject = df.groupby("subject")["label"].nunique()
+    assert (per_subject == 1).all(), "a sakar2018 subject has mixed labels"
+    subj_label = df.groupby("subject")["label"].first()
+    assert int((subj_label == 1).sum()) == 188, "sakar2018 PD subjects != 188"
+    assert int((subj_label == 0).sum()) == 64, "sakar2018 HC subjects != 64"
+    assert df["label"].value_counts().to_dict() == {1: 564, 0: 192}
+
+    features = [c for c in df.columns
+                if c not in C.SAKAR2018_NON_FEATURES + ["label", "subject"]]
+    assert len(features) == 752, f"sakar2018 feature count {len(features)}"
+    assert "gender" not in features or C.SAKAR2018_USE_GENDER
+    assert all(pd.api.types.is_numeric_dtype(df[c]) for c in features), \
+        "a sakar2018 feature is non-numeric"
+
+    out = df[["subject", "label"] + features].copy()
+    assert out.shape == (756, 754), f"sakar2018 out shape {out.shape}"
+    return out
+
+
 def main() -> None:
     C.PROCESSED.mkdir(parents=True, exist_ok=True)
 
@@ -172,6 +219,7 @@ def main() -> None:
         ("uci_mdvp", build_uci, C.UCI_OUT, [C.UCI_RAW]),
         ("sakar_train", build_sakar_train, C.SAKAR_TRAIN_OUT, [C.SAKAR_TRAIN_RAW]),
         ("sakar_test", build_sakar_test, C.SAKAR_TEST_OUT, [C.SAKAR_TEST_RAW]),
+        ("sakar2018", build_sakar2018, C.SAKAR2018_OUT, [C.SAKAR2018_RAW]),
     ]
 
     manifest = {}

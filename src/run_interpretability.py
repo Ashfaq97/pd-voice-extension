@@ -79,9 +79,14 @@ from cv_core import outer_splits
 plt.rcParams.update({"figure.dpi": 150, "savefig.bbox": "tight",
                      "font.size": 9, "axes.grid": False})
 
+# Sakar-2018 is deliberately excluded here. SHAP over 752 features on 252
+# subjects produces a ranking dominated by collinear near-duplicates, and the
+# coefficient model would prune almost all of them -- neither is informative.
+# The interpretability claim in the paper rests on the two corpora with
+# interpretable feature sets.
 DATASETS = {
     "UCI/MDVP": (C.UCI_OUT, C.UCI_FEATURES, "uci"),
-    "Sakar": (C.SAKAR_TRAIN_OUT, C.SAKAR_FEATURES, "sakar"),
+    "Sakar-2013": (C.SAKAR_TRAIN_OUT, C.SAKAR_FEATURES, "sakar"),
 }
 
 

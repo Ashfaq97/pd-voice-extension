@@ -18,13 +18,13 @@ models, hyper-parameter grids, preprocessing and random seed fixed, and varying 
 partitioning rule, accuracy falls by 5.8 to 15.5 percentage points when folds are formed
 by speaker rather than by recording (all *p* < 0.001, paired across 10 fold seeds). The
 inflation is not uniform across model families: logistic regression loses 6.5 points on
-the UCI/MDVP corpus and 5.8 on the Sakar corpus, while gradient boosting, XGBoost and
+the UCI/MDVP corpus and 5.8 on the Sakar-2013 corpus, while gradient boosting, XGBoost and
 k-nearest neighbours lose 11.0 to 15.5. Because the most flexible models are the most
 inflated, the published ordering of models does not survive honest validation. Accuracy
 alone conceals the severity: healthy-control recall on UCI/MDVP falls from 0.58–0.80 to
 0.29–0.39, and the majority-class baseline on that corpus is 0.754, so most models are
 at or below trivial performance once leakage is removed. No recording type rescues
-performance — across 20 model-by-type combinations on Sakar the best subject-level
+performance — across 20 model-by-type combinations on Sakar-2013 the best subject-level
 accuracy is 0.596 against a chance level of 0.500, and sustained vowels are the weakest
 type for four of five models. On an independent cohort of 28 unseen PD speakers,
 sensitivity is 0.41–0.59. Finally, with standard errors clustered by speaker, no
@@ -102,7 +102,7 @@ clustering is recoverable — but only if one looks for it. The dataset's own
 documentation presents it as 195 instances, and a large fraction of published analyses
 treat it that way.
 
-The Sakar corpus provides an independent check with a different feature extraction
+The Sakar-2013 corpus provides an independent check with a different feature extraction
 pipeline. Its training partition holds 1,040 recordings from 40 speakers, evenly balanced
 at 20 PD and 20 controls, with 26 measures computed in Praat. Each speaker contributes 26
 recordings in a fixed order spanning four speech tasks.
@@ -154,7 +154,7 @@ with PD**, not the 31 and 23 stated in the thesis.
 
 **Table 2.** Corpora after cleaning.
 
-| | UCI/MDVP | Sakar (training) | Sakar (held-out) |
+| | UCI/MDVP | Sakar-2013 (training) | Sakar-2013 (held-out) |
 |---|---|---|---|
 | Recordings | 195 | 1,040 | 168 |
 | Speakers | 32 | 40 | 28 |
@@ -167,7 +167,7 @@ Speaker identity is the `name` field with its trailing index removed for UCI/MDV
 `id` column for Sakar.
 
 Three data defects required handling and are documented in full in the repository. The
-Sakar training file used in the 2023 analysis had been corrupted locally: 178 rows from
+Sakar-2013 training file used in the 2023 analysis had been corrupted locally: 178 rows from
 the excluded video-harvested collection had been appended with one field too few, shifting
 every column and placing the class label in the `UPDRS` field, and four further rows
 carried jitter and shimmer values expressed as fractions where every genuine row uses
@@ -175,7 +175,7 @@ percentages. We recovered the pristine distribution from the original archive an
 from that; the corrupted file is retained solely as a regression fixture.
 
 `UPDRS` is excluded as a predictor and is not written to the processed data at all. In the
-Sakar corpus it takes the value 1 for every control row and 5–55 for every PD row, with no
+Sakar-2013 corpus it takes the value 1 for every control row and 5–55 for every PD row, with no
 overlap, and including it yields perfect accuracy for free.
 
 ### 3.2 Validation regimes
@@ -241,11 +241,11 @@ confidence interval.
 | UCI/MDVP | Decision Tree | 0.856 (0.030) | 0.743 (0.048) | 0.738 | 0.114 [0.067, 0.161] |
 | UCI/MDVP | Gradient Boosting | 0.916 (0.011) | 0.787 (0.022) | 0.810 | 0.129 [0.109, 0.149] |
 | UCI/MDVP | XGBoost | 0.917 (0.012) | 0.786 (0.028) | 0.795 | 0.131 [0.103, 0.158] |
-| Sakar | Logistic Regression | 0.630 (0.007) | **0.572** (0.017) | 0.519 | 0.058 [0.043, 0.072] |
-| Sakar | KNN | 0.670 (0.008) | 0.559 (0.023) | 0.526 | 0.110 [0.094, 0.127] |
-| Sakar | Decision Tree | 0.621 (0.017) | 0.534 (0.037) | 0.482 | 0.087 [0.060, 0.115] |
-| Sakar | Gradient Boosting | 0.688 (0.005) | 0.558 (0.017) | 0.512 | 0.130 [0.116, 0.144] |
-| Sakar | XGBoost | 0.697 (0.009) | 0.555 (0.017) | 0.516 | 0.143 [0.128, 0.158] |
+| Sakar-2013 | Logistic Regression | 0.630 (0.007) | **0.572** (0.017) | 0.519 | 0.058 [0.043, 0.072] |
+| Sakar-2013 | KNN | 0.670 (0.008) | 0.559 (0.023) | 0.526 | 0.110 [0.094, 0.127] |
+| Sakar-2013 | Decision Tree | 0.621 (0.017) | 0.534 (0.037) | 0.482 | 0.087 [0.060, 0.115] |
+| Sakar-2013 | Gradient Boosting | 0.688 (0.005) | 0.558 (0.017) | 0.512 | 0.130 [0.116, 0.144] |
+| Sakar-2013 | XGBoost | 0.697 (0.009) | 0.555 (0.017) | 0.516 | 0.143 [0.128, 0.158] |
 
 Majority-class baselines: 0.754 (UCI/MDVP), 0.500 (Sakar). All paired differences are
 significant at *p* < 0.001.
@@ -258,7 +258,7 @@ Two features of Table 3 deserve emphasis. First, on UCI/MDVP the majority-class 
 is 0.754, and under subject-level validation only logistic regression clears it by a
 meaningful margin; the decision tree at 0.743 falls **below** it, and KNN at 0.756 matches
 it. A reader given only the recording-level column would conclude that four of five models
-exceed 85% accuracy. Second, on Sakar the leave-one-subject-out column sits between 0.482
+exceed 85% accuracy. Second, on Sakar-2013 the leave-one-subject-out column sits between 0.482
 and 0.526 against a chance level of 0.500 — that is, at chance. Whatever the models are
 learning on that corpus does not generalise to an unseen speaker at all.
 
@@ -293,11 +293,11 @@ of tree ensembles, and that under the most stringent regime the linear model is 
 | UCI/MDVP | Decision Tree | 0.690 | 0.213 | 0.830 | 0.375 |
 | UCI/MDVP | Gradient Boosting | 0.668 | 0.331 | 0.884 | 0.417 |
 | UCI/MDVP | XGBoost | 0.724 | 0.320 | 0.878 | 0.417 |
-| Sakar | Logistic Regression | 0.617 | 0.148 | 0.546 | 0.602 |
-| Sakar | KNN | 0.619 | 0.163 | 0.590 | 0.573 |
-| Sakar | Decision Tree | 0.553 | 0.051 | 0.454 | 0.596 |
-| Sakar | Gradient Boosting | 0.613 | 0.177 | 0.562 | 0.615 |
-| Sakar | XGBoost | 0.632 | 0.187 | 0.560 | 0.627 |
+| Sakar-2013 | Logistic Regression | 0.617 | 0.148 | 0.546 | 0.602 |
+| Sakar-2013 | KNN | 0.619 | 0.163 | 0.590 | 0.573 |
+| Sakar-2013 | Decision Tree | 0.553 | 0.051 | 0.454 | 0.596 |
+| Sakar-2013 | Gradient Boosting | 0.613 | 0.177 | 0.562 | 0.615 |
+| Sakar-2013 | XGBoost | 0.632 | 0.187 | 0.560 | 0.627 |
 
 Averaged over ten fold seeds, healthy-control recall on UCI/MDVP falls from 0.583–0.804
 under recording-level validation to 0.285–0.392 under subject-level validation (Figure 5).
@@ -313,7 +313,7 @@ is itself a reason for caution about any result derived from it.
 
 ### 4.4 No recording type rescues performance
 
-The most natural objection is that the Sakar corpus mixes speech tasks, and that sustained
+The most natural objection is that the Sakar-2013 corpus mixes speech tasks, and that sustained
 vowels — the standard clinical elicitation, and the only task in UCI/MDVP — would perform
 better in isolation.
 
@@ -343,7 +343,7 @@ range from 0.578 to 0.705, reproducing the appearance of a usable signal.
 
 ### 4.5 Independent cohort
 
-The Sakar distribution includes a held-out partition of 168 recordings from 28 speakers
+The Sakar-2013 distribution includes a held-out partition of 168 recordings from 28 speakers
 disjoint from the training set. It is **not** usable as an external validation set in the
 usual sense: it contains 28 PD speakers and no controls, and only sustained vowels. On such
 a cohort specificity is undefined, MCC is undefined because the labels have no variance,
@@ -376,7 +376,7 @@ We tested the hypothesis that leaky models rely on different features — which 
 direct evidence that they were learning speaker identity. **The hypothesis is not
 supported.** Importance rankings under recording-level and subject-level training correlate
 at Spearman ρ = +0.894 (logistic regression) and +0.964 (XGBoost) on UCI/MDVP, and +0.869
-and +0.932 on Sakar, with four or five of the top five features shared in every case
+and +0.932 on Sakar-2013, with four or five of the top five features shared in every case
 (Figure 4b). The leak does not change *which* acoustic quantities a model uses; it changes
 how well those quantities appear to separate the classes, because the test speaker's own
 other recordings sit nearby in the same feature space. The mechanism is memorisation within
@@ -389,10 +389,10 @@ in both corpora. The UCI/MDVP corpus therefore has an effective dimensionality o
 the 22 usually reported. Fitting an unpenalised logistic regression to the raw feature set
 produces confidence intervals spanning thousands of units. After removing duplicates the
 remaining jitter measures, and separately the shimmer measures, are near-substitutes, with
-variance inflation factors up to 741 on UCI/MDVP and 145 on Sakar.
+variance inflation factors up to 741 on UCI/MDVP and 145 on Sakar-2013.
 
 We therefore fit the inference model on a VIF-pruned subset (12 of 20 features on
-UCI/MDVP, 19 of 23 on Sakar, all VIF < 10), with standard errors clustered by speaker.
+UCI/MDVP, 19 of 23 on Sakar-2013, all VIF < 10), with standard errors clustered by speaker.
 Clustering matters: treating six recordings from one person as six independent
 observations is the same error at the inference level that recording-level partitioning is
 at the validation level.
@@ -486,7 +486,7 @@ constructed datasets.
 measures and Sakar with its distributed Praat measures. We did not re-extract features from
 audio, so we cannot separate the contribution of the feature set from that of the cohort.
 
-**No severity modelling.** We treat PD detection as binary. The Sakar corpus carries UPDRS
+**No severity modelling.** We treat PD detection as binary. The Sakar-2013 corpus carries UPDRS
 scores, but they are unusable as a predictor — they take the value 1 for every control and
 5–55 for every PD speaker — and we did not model severity as a separate regression task.
 
@@ -522,7 +522,7 @@ are that speaker's recordings.
 **Figure 2.** Accuracy by model and regime on both corpora, with majority-class baselines.
 Bars for regimes A and B are means over ten fold seeds with 1 SD error bars.
 
-**Figure 3.** Subject-level accuracy by recording type on the Sakar corpus, against chance.
+**Figure 3.** Subject-level accuracy by recording type on the Sakar-2013 corpus, against chance.
 
 **Figure 4.** SHAP summary for logistic regression under subject-level training.
 **Figure 4b.** Feature reliance under leaky versus subject-level training.

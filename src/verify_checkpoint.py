@@ -30,11 +30,11 @@ CHECKPOINT = {
     ("UCI/MDVP", "KNN"): (0.892, 0.769),
     ("UCI/MDVP", "Decision Tree"): (0.851, 0.697),
     ("UCI/MDVP", "Logistic Regression"): (0.846, 0.836),
-    ("Sakar", "XGBoost"): (0.701, 0.543),
-    ("Sakar", "Decision Tree"): (0.615, 0.486),
-    ("Sakar", "Gradient Boosting"): (0.688, 0.578),
-    ("Sakar", "KNN"): (0.664, 0.575),
-    ("Sakar", "Logistic Regression"): (0.637, 0.570),
+    ("Sakar-2013", "XGBoost"): (0.701, 0.543),
+    ("Sakar-2013", "Decision Tree"): (0.615, 0.486),
+    ("Sakar-2013", "Gradient Boosting"): (0.688, 0.578),
+    ("Sakar-2013", "KNN"): (0.664, 0.575),
+    ("Sakar-2013", "Logistic Regression"): (0.637, 0.570),
 }
 
 # Handoff section 1, recording-type breakdown (Sakar, subject-level).
@@ -100,7 +100,7 @@ def verify_leak_magnitude() -> None:
     print("=== leak magnitude by regime ===")
     for name, path, feats in [
         ("UCI/MDVP", C.UCI_OUT, C.UCI_FEATURES),
-        ("Sakar", C.SAKAR_TRAIN_OUT, C.SAKAR_FEATURES),
+        ("Sakar-2013", C.SAKAR_TRAIN_OUT, C.SAKAR_FEATURES),
     ]:
         df = pd.read_csv(path)
         X, y, g = df[feats].values, df["label"].values, df["subject"].values
@@ -147,7 +147,7 @@ def main() -> None:
         for r in out.itertuples()
     ]
     out = out.set_index(["dataset", "model"]).reindex(
-        [(d, m) for d in ["UCI/MDVP", "Sakar"] for m in MODEL_ORDER]
+        [(d, m) for d in ["UCI/MDVP", "Sakar-2013"] for m in MODEL_ORDER]
     ).reset_index()
     out.to_csv(C.TABLES / "checkpoint_comparison.csv", index=False)
 

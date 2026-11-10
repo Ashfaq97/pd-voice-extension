@@ -128,7 +128,7 @@ def main() -> None:
                     aucs.append(s["roc_auc"])
                 a = np.array(accs)
                 rows.append({
-                    "dataset": "Sakar", "rec_type": rec_type, "model": model_name,
+                    "dataset": "Sakar-2013", "rec_type": rec_type, "model": model_name,
                     "regime": regime, "n_recordings": len(sub),
                     "n_seeds": len(SEEDS),
                     "accuracy_mean": a.mean(), "accuracy_sd": a.std(ddof=1),
