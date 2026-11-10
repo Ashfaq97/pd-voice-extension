@@ -137,6 +137,20 @@ Run in order:
 | 9 | `python src/verify_checkpoint.py` | `checkpoint_comparison.csv`, `_rectype.csv` | <1 min |
 | 10 | `python src/verify_manuscript.py` | — (144 checks of the manuscript against the tables) | <1 s |
 
+### Walkthrough notebook
+
+`notebooks/leakage_walkthrough.ipynb` is a guided tour for presenting the result. It reads
+the precomputed tables rather than recomputing them, so the whole notebook runs in about
+five seconds, and it demonstrates the leak live (100% vs 0% of test recordings sharing a
+speaker with training) plus one short live model comparison.
+
+```bash
+jupyter lab notebooks/leakage_walkthrough.ipynb
+```
+
+The notebooks in `notebooks/archive/` are the 2023 analysis, kept for reference only. They
+contain the errors this work corrects and should not be presented or run.
+
 Steps 3-7 are independent of each other and depend only on step 1. Step 8 needs 3, 4 and
 5; step 9 needs 3 and 5; step 10 needs 3-7.
 
